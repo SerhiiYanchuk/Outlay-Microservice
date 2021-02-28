@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: outlay-statistic-deployment
+spec:
+  selector:
+    matchLabels:
+      app: outlay-statistic-pod
+  template:
+    metadata:
+      labels:
+        app: outlay-statistic-pod
+    spec:
+      containers:
+      - name: outlay-statistic-container
+        image: outlay-statistic:v1
+        resources:
+          limits:
+            memory: "128Mi"
+            cpu: "500m"
+        ports:
+        - containerPort: 80
+

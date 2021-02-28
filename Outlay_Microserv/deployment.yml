@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: outlay-microserv-deployment
+spec:
+  selector:
+    matchLabels:
+      app: outlay-microserv-pod
+  template:
+    metadata:
+      labels:
+        app: outlay-microserv-pod
+    spec:
+      containers:
+      - name: outlay-microserv-container
+        image: outlay-cards:v1
+        resources:
+          limits:
+            memory: "128Mi"
+            cpu: "500m"
+        ports:
+        - containerPort: 80

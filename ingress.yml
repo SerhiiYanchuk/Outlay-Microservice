@@ -1,0 +1,24 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: outlay-microserv-ingress
+spec:
+  rules:
+    - http:
+        paths:
+          - pathType: Exact
+            path: /cards
+            backend:
+              service:
+                name: outlay-microserv-service
+                port:
+                  number: 8080
+      
+          - pathType: Exact
+            path: /statistic
+            backend:
+              service:
+                name: outlay-statistic-service
+                port:
+                  number: 8080
+
